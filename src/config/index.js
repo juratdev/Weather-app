@@ -1,9 +1,25 @@
+import moment from "moment";
 import axios from "axios";
 
 export const weatherAPI = axios.create({
   baseURL: "https://api.openweathermap.org",
 });
 
+export const formatDate = (date, format = "dddd", lang = "uz") => {
+  moment.updateLocale("uz", {
+    weekdays: [
+      "Yakshanba",
+      "Dushanba",
+      "Seshanba",
+      "Chorshanba",
+      "Payshanba",
+      "Juma",
+      "Shanba",
+    ],
+  });
+  moment.locale(lang);
+  return moment(date).format(format);
+};
 export const regions = [
   {
     name: "Toshkent viloyati",
@@ -65,14 +81,4 @@ export const regions = [
     lat: "40.8309135",
     lon: "68.6661865",
   },
-];
-
-export const days = [
-  { name: "Dushanba" },
-  { name: "Seshanba" },
-  { name: "Chorshanba" },
-  { name: "Payshanba" },
-  { name: "Juma" },
-  { name: "Shanba" },
-  { name: "Yakshanba" },
 ];

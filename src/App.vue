@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 const regionTitle = ref("Toshkent viloyati");
 const weatherData = ref(null);
-import { regions, days, weatherAPI } from "@/config/index";
+import { regions, weatherAPI, formatDate } from "@/config/index";
 import moment from "moment";
 
 const getRegionWeather = async (lat, lon, name) => {
@@ -81,11 +81,11 @@ onMounted(() => {
           </div>
 
           <div class="flex flex-col gap-3 p-5 mt-5 text-white bg-emerald-900">
-            <div v-for="(day, index) in days" :key="index">
+            <div v-for="(day, index) in weatherData.daily" :key="index">
               <div class="flex justify-between gap-16">
                 <div class="flex items-end gap-2 mt-auto">
                   <h4 class="text-xl">
-                    {{ day.name }}
+                    {{ formatDate(day.dt * 1000) }}
                   </h4>
                   <span class="text-xs font-medium md:text-base"
                     >(
