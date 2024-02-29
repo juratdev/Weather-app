@@ -64,7 +64,7 @@ export const regions = [
   {
     name: "Qashqadaryo viloyati",
     lat: "40.1034582",
-    lon: "6export 5.3734221",
+    lon: "65.3734221",
   },
   {
     name: "Nukus shahri ",
